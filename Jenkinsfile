@@ -1,53 +1,20 @@
 pipeline {
     agent any
-    parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'hello world')
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-    }
     tools {
         maven 'maven'
     }
-    options {
-        timeout(time: 1, unit: 'SECONDS')
-    }
-    environment { 
-        PRENOM = 'boris'
-        }
     stages {
-        stage ('Stage 1') {
-            options {
-                retry(2)
-            }
+        stage('checkout') {
             steps {
-                echo "hello world"
-                echo prenom2
-                sh 'mvn -v'
-            }
-        environment { 
-            prenom2 = 'henri'
-            }
-        post {
-            failure {
-                echo "errrorrr"
+                git credentialsId: '698b8fc8-ca64-47f5-9b93-659da750f1a6', url: 'https://github.com/BorisFyot/devops2019-jenkins.git', branch: 'dev'
             }
         }
-        }
-        stage ('Stage 2') {
+        stage('build') {
             steps {
-                echo "comment vas tu"
-                echo prenom3
-            }
-            environment { 
-            prenom3 = 'tony'
-            }
+                sh 'mvn install'
+            }       
+          
         }
-        stage ('Stage 3') {
-            steps {
-                echo "bien et toi?"
-                echo PRENOM
-                echo "Password: ${params.PASSWORD}"
-            }
-        }
-    } 
+    }
 
 }
