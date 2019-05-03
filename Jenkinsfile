@@ -8,6 +8,8 @@ pipeline {
             steps {
                 echo "un"
             }
+    	}
+        stage('sequential') {
         	stages {
 	        	stage('step2') {
                 		steps {
