@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('step1') {
             steps {
-                NAME= input message: 'quel es ton nom ?'
+                echo "un"
             }
         	stages {
 	        	stage('step2') {
