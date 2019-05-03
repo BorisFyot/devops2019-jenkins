@@ -21,12 +21,8 @@ pipeline {
         }        
         post {
         	success {
-        		stage('deploy') {
-            		steps {
-                		sh 'mvn deploy -s settings.xml'
-            		}           
-        		}
-        	}
+                sh 'mvn deploy -s settings.xml'       	          
+           	}
         }
 
     }
