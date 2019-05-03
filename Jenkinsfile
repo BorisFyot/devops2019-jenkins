@@ -21,7 +21,7 @@ pipeline {
         }        
         stage('deploy') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true deploy -s settings.xml'
+                sh 'mvn deploy -s settings.xml'
             }           
         }
     }
