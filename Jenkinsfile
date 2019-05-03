@@ -12,13 +12,12 @@ pipeline {
         stage('build') {
             steps {
                 sh 'mvn install'
-            }       
+            }
+         }       
         stage('deploy') {
             steps {
                 sh 'mvn deploy -s settings.xml'
             }           
         }
     }
-
-	}
 }
