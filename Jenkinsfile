@@ -14,15 +14,20 @@ pipeline {
                 sh 'mvn install'
             }
          }       
-        stage('deploy') {
+        stage('test') {
             steps {
                 sh 'mvn test'
             }           
         }        
-        stage('deploy') {
-            steps {
-                sh 'mvn deploy -s settings.xml'
-            }           
+        post {
+        	success {
+        		stage('deploy') {
+            		steps {
+                		sh 'mvn deploy -s settings.xml'
+            		}           
+        		}
+        	}
         }
+
     }
 }
