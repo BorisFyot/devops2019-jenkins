@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>demo</artifactId>
+    <packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
@@ -39,6 +40,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+    	<snapshotRepository>
+    		<id>nexus</id>
+    		<url>http://127.0.0.1:8081/repository/maven-snapshots/</url>
+    	</snapshotRepository>
+	</distributionManagement>
   	<reporting>
     		<plugins>
       			<plugin>
