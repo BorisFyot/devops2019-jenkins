@@ -19,11 +19,10 @@ pipeline {
                 sh 'mvn test'
             }           
         }        
-        post {
-        	success {
-                sh 'mvn deploy -s settings.xml'       	          
-           	}
-        }
-
+    }
+    post {
+      	success {
+            sh 'mvn deploy -s settings.xml'       	          
+      	}
     }
 }
