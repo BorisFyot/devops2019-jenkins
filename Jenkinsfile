@@ -4,24 +4,33 @@ pipeline {
         maven 'maven'
     }
     stages {
-        stage('step1') {
-            steps {
-                echo "un"
-            }
-    	}
-        stage('sequential') {
-        	stages {
-	        	stage('step2') {
-                		steps {
-                    		echo "bonjour BORIS"  
-                		}
+        stage('parallel1') {
+        	parallel {
+        		stage('etape1.1') {
+		            steps {
+    		            echo "un"
+        		    }
         		}
-        		stage('step3') {
-                		steps {
-                    		echo "bonjour HENRI" 
-                		}
+        		stage('etape1.2') {
+		            steps {
+    		     	   echo "deux"
+        		    }
         		}
-     		}
-		}
-	}
+        	}
+        }
+        stage('parallel2') {
+        	parallel {
+        		stage('etape2.1') {
+		            steps {
+    		            echo "2 un"
+        		    }
+        		}
+        		stage('etape2.2') {
+		            steps {
+    		     	   echo "2 deux"
+        		    }
+        		}
+        	}
+        }
+    }
 }
